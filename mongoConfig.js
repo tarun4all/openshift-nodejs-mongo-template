@@ -3,10 +3,9 @@ const db = {
     url : process.env.MONGO_URL,
 }
 
-mongoose.connect(db.url, () => {
-    console.log("Connected to the DB");
-}, (err) => {
-    console.log(err);
+mongoose.connect(db.url, { useNewUrlParser: true, useUnifiedTopology: true }, (err) => {
+    if(err) console.log(err);
+    else console.log("Connected to the DB");
 });
 
 const Schema  = mongoose.Schema;
